@@ -6,7 +6,10 @@ orbs:
 jobs:
   checkout:
     executor:
-      name: unity/windows-2022
+      name: 'unity/windows-2022'
+      size: 'large'
+      editor_version: '2023.1.13f1'
+      target_platform: 'windows-il2cpp'
     steps:
       - checkout
 
