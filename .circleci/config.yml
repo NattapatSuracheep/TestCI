@@ -22,6 +22,7 @@ jobs:
           command: "echo Hello, World!"
   
   add_ssh_keys:
+    steps:
       fingerprints:
         - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
       - checkout
