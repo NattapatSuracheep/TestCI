@@ -8,9 +8,12 @@ workflows:
     jobs:
       - unity/create-activation-file:
           name: "create-activation-file"
-          
+
       - unity/test:
           name: 'test-windows'
+          add_ssh_key:
+            fingerprint:
+              - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
           step-name: 'Check if the tests run and results are uploaded'
           unity-license-var-name: 'UNITY_ENCODED_LICENSE'
           unity-username-var-name: 'UNITY_USERNAME'
