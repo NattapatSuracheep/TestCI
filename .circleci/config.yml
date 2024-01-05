@@ -43,6 +43,9 @@ workflows:
 
     # Windows
       - unity/test:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
           name: 'test-windows'
           step-name: 'Check if the tests run and results are uploaded'
           unity-license-var-name: 'UNITY_ENCODED_LICENSE'
@@ -53,6 +56,6 @@ workflows:
             size: 'large'
             editor_version: '2021.3.2f1'
             target_platform: 'windows-il2cpp'
-          project-path: 'Unity2D-Demo-Game-CI-CD/src'
+          project-path: 'TestCI/Assets'
           test-platform: 'playmode'
           context: unity
