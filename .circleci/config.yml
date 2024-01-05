@@ -5,8 +5,11 @@ orbs:
 
 jobs:
   checkout:
-    docker:
-      - image: cimg/base:stable
+    executor:
+      name: 'unity/windows-2022'
+      size: 'large'
+      editor_version: '2021.3.2f1'
+      target_platform: 'windows-il2cpp'
     steps:
       # - add_ssh_keys:
       #     fingerprints:
@@ -18,11 +21,6 @@ jobs:
           unity-license-var-name: 'UNITY_ENCODED_LICENSE'
           unity-username-var-name: 'UNITY_USERNAME'
           unity-password-var-name: 'UNITY_PASSWORD'
-          executor:
-            name: 'unity/windows-2022'
-            size: 'large'
-            editor_version: '2021.3.2f1'
-            target_platform: 'windows-il2cpp'
           project-path: 'Unity2D-Demo-Game-CI-CD/src'
           test-platform: 'playmode'
           context: unity
