@@ -29,6 +29,9 @@ workflows:
   #     - say-hello
   test-unity-project:
     jobs:
+      - add_ssh_keys:
+        fingerprints:
+        - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
       # Windows
       - unity/test:
           name: 'test-windows'
