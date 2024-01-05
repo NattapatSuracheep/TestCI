@@ -6,6 +6,9 @@ orbs:
 workflows:
   test-unity-project:
     jobs:
+      - unity/create-activation-file:
+          name: "create-activation-file"
+          
       - unity/test:
           name: 'test-windows'
           step-name: 'Check if the tests run and results are uploaded'
