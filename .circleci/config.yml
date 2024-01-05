@@ -19,6 +19,7 @@ jobs:
 workflows:
   test-unity-project:
     jobs:
+      - checkout
       - unity/build:
           name: 'build-Windows64-il2cpp'
           step-name: 'Build project for Windows using Cloud'
@@ -33,3 +34,5 @@ workflows:
           project-path: 'Unity2D-Demo-Game-CI-CD/src'
           build-target: StandaloneWindows64
           context: unity
+          requires:
+            - checkout
