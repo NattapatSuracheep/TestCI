@@ -20,12 +20,11 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-  
-  add_ssh_keys:
+  deploy-job:
     steps:
-      add_ssh_keys:
-        fingerprints:
-          - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
+      - add_ssh_keys:
+          fingerprints:
+            - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
       - checkout
 
 # Orchestrate jobs using workflows
