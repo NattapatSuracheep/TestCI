@@ -20,19 +20,13 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-  add_ssh_key:
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:T+hikeziHiHUzdeaQ2k25EXhhmqIY4Qf5sbt/Kx3SgA nattapat.s@varisoft.com"
-      - checkout
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  add_ssh_workflow:
-    jobs:
-      - add_ssh_key
+  # say-hello-workflow:
+  #   jobs:
+  #     - say-hello
   test-unity-project:
     jobs:
       # Windows
@@ -45,7 +39,7 @@ workflows:
           executor:
             name: 'unity/windows-2022'
             size: 'large'
-            editor_version: '2021.3.2f1'
+            editor_version: '2023.1.13f1'
             target_platform: 'windows-il2cpp'
           project-path: 'Assets'
           test-platform: 'playmode'
