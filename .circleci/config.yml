@@ -28,8 +28,23 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
+            - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
       - checkout
+
+  unity/test:
+    name: 'test-windows'
+    step-name: 'Check if the tests run and results are uploaded'
+    unity-license-var-name: 'UNITY_ENCODED_LICENSE'
+    unity-username-var-name: 'UNITY_USERNAME'
+    unity-password-var-name: 'UNITY_PASSWORD'
+    executor:
+      name: 'unity/windows-2022'
+      size: 'large'
+      editor_version: '2023.1.13f1'
+      target_platform: 'windows-il2cpp'
+    project-path: 'TestCI/Assets'
+    test-platform: 'playmode'
+    context: unity
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
@@ -40,22 +55,4 @@ workflows:
   test-unity-project:
     jobs:
       - testing-job
-
-    # Windows
-      - unity/test:
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
-          name: 'test-windows'
-          step-name: 'Check if the tests run and results are uploaded'
-          unity-license-var-name: 'UNITY_ENCODED_LICENSE'
-          unity-username-var-name: 'UNITY_USERNAME'
-          unity-password-var-name: 'UNITY_PASSWORD'
-          executor:
-            name: 'unity/windows-2022'
-            size: 'large'
-            editor_version: '2021.3.2f1'
-            target_platform: 'windows-il2cpp'
-          project-path: 'TestCI/Assets'
-          test-platform: 'playmode'
-          context: unity
+      - unity/test
