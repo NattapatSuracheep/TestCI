@@ -20,7 +20,7 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-  deploy-job:
+  testing-job:
     docker:
       - image: cimg/base:stable
       
@@ -30,16 +30,6 @@ jobs:
             - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
       - checkout
 
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  # say-hello-workflow:
-  #   jobs:
-  #     - say-hello
-  test-unity-project:
-    jobs:
-      - deploy-job
-      
       # Windows
       - unity/test:
           name: 'test-windows'
@@ -55,3 +45,13 @@ workflows:
           project-path: 'Assets'
           test-platform: 'playmode'
           context: unity
+
+# Orchestrate jobs using workflows
+# See: https://circleci.com/docs/configuration-reference/#workflows
+workflows:
+  # say-hello-workflow:
+  #   jobs:
+  #     - say-hello
+  test-unity-project:
+    jobs:
+      - testing-job
