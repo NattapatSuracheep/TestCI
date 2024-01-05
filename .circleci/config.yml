@@ -20,6 +20,11 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+  
+  add_ssh_keys:
+      fingerprints:
+        - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
+      - checkout
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
@@ -29,10 +34,7 @@ workflows:
   #     - say-hello
   test-unity-project:
     jobs:
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:nl3uhRHGnv4PlKXYr6yNhgC5CTg4+n09eMNjSQwVYAA varisoft-pc@varisoft"
-      - checkout
+      - add_ssh_keys
       
       # Windows
       - unity/test:
