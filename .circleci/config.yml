@@ -25,6 +25,9 @@ workflows:
           unity-license-var-name: 'UNITY_ENCODED_LICENSE'
           unity-username-var-name: 'UNITY_USERNAME'
           unity-password-var-name: 'UNITY_PASSWORD'
+          add_ssh_keys:
+            fingerprints:
+              - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
           executor:
             name: 'unity/windows-2022'
             size: 'large'
