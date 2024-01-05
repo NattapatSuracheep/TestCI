@@ -21,6 +21,9 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
   deploy-job:
+    docker:
+      - image: cimg/base:stable
+      
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -35,7 +38,7 @@ workflows:
   #     - say-hello
   test-unity-project:
     jobs:
-      - add_ssh_keys
+      - deploy-job
       
       # Windows
       - unity/test:
