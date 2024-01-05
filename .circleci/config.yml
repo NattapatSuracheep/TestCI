@@ -4,14 +4,15 @@ orbs:
   unity: game-ci/unity@1.7.0
 
 workflows:
+  ssh_key:
+    jobs:
+       steps:
+        - add_ssh_key:
+            fingerprints:
+              - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
+
   test-unity-project:
     jobs:
-      steps:
-        - add_ssh_key:
-            fingerprint:
-              - "38:26:c1:fd:dd:bd:b0:7b:1f:7a:1c:49:b8:2d:bd:68"
-        - unity/test
-
       - unity/test:
           name: 'test-windows'
           step-name: 'Check if the tests run and results are uploaded'
