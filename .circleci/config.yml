@@ -8,6 +8,7 @@ workflows:
     jobs:
       - unity/create-activation-file:
           name: "create-activation-file"
+          editor_version: 2023.1.13f1
 
       # Windows
       - unity/test:
@@ -19,7 +20,7 @@ workflows:
           executor:
             name: 'unity/windows-2022'
             size: 'large'
-            editor_version: '2021.3.2f1'
+            editor_version: '2023.1.13f1'
             target_platform: 'windows-il2cpp'
           test-platform: 'playmode'
           requires:
