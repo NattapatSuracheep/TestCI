@@ -21,6 +21,7 @@ workflows:
     jobs:
       - unity/create-activation-file:
           name: "create-activation-file"
+          editor_version: 2032.1.13f1
 
       # Windows
       - unity/test:
