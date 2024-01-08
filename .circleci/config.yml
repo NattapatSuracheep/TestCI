@@ -22,9 +22,5 @@ workflows:
             editor_version: '2021.3.2f1'
             target_platform: 'windows-il2cpp'
           test-platform: 'playmode'
-          steps:
-            - run:
-                name: SSH Key
-                command: > $ ssh -v git@github.com
           require:
             - create-unity-activation-file
