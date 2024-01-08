@@ -17,6 +17,7 @@ public class TestScript : MonoBehaviour
         Debug.Log("Hi-6");
         Debug.Log("Hi-6");
         Debug.Log("Hi-6");
+        Debug.Log("Hi-6");
     }
 
     // Update is called once per frame
