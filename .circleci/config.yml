@@ -7,8 +7,9 @@ orbs:
 workflows:
   test-unity-project:
     jobs:
-      unity-certifivate:
-        executor: 
+      unity-test:
+        executor:
+          name: 'unity/windows-2019'
         steps:
           - run:
               name: docker
