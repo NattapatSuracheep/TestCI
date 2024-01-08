@@ -2,24 +2,38 @@ version: 2.1
 
 orbs:
   unity: game-ci/unity@1.7.0
+  windows: circle/windows@5.0.0
 
 workflows:
   test-unity-project:
     jobs:
-      - unity/create-activation-file:
-          editor_version: "editor-2023.1.13f1-3.0.0"
+      unity-certifivate:
+        executor: 
+        steps:
+          - run:
+              name: docker
+              command: docker pull unityci/editor:windows-2023.1.13f1-windows-il2cpp-3.0.0
+          - run:
+              name: unity-create-cer
+              command:
+                - unity/create-activation-file:
+                    editor_version: "2023.1.13f1"
+          - run:
+              name: unity-test
+              command:
+                - unity/test:
+                    name: 'test-windows'
+                    step-name: 'Check if the tests run and results are uploaded'
+                    unity-license-var-name: 'UNITY_ENCODED_LICENSE'
+                    unity-username-var-name: 'UNITY_USERNAME'
+                    unity-password-var-name: 'UNITY_PASSWORD'
+                    executor:
+                      name: 'unity/windows-2019'
+                      size: 'large'
+                      editor_version: '2023.1.13f1'
+                      target_platform: 'windows-il2cpp'
+                    test-platform: 'playmode'
+                    context: unity
 
-      # Windows
-      - unity/test:
-          name: 'test-windows'
-          step-name: 'Check if the tests run and results are uploaded'
-          unity-license-var-name: 'UNITY_ENCODED_LICENSE'
-          unity-username-var-name: 'UNITY_USERNAME'
-          unity-password-var-name: 'UNITY_PASSWORD'
-          executor:
-            name: 'unity/windows-2019'
-            size: 'large'
-            editor_version: '2023.1.13f1'
-            target_platform: 'windows-il2cpp'
-          test-platform: 'playmode'
-          context: unity
+      # - unity/create-activation-file:
+      #     name: "unity-create-activation"
