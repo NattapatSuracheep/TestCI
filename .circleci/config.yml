@@ -23,9 +23,9 @@ workflows:
   test-unity-project:
     jobs:
       - unity-test
-      - unity/create-activation-file
-        requires:
-          - unity-test
-      - unity/test
-        requires:
-          - unity-test
+      - unity/create-activation-file:
+          requires:
+            - unity-test
+      - unity/test:
+          requires:
+            - unity-test
