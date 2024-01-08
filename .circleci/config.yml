@@ -4,14 +4,14 @@ orbs:
   unity: game-ci/unity@1.7.0
 
 jobs:
-  - checkout:
-      docker:
-        - image: ubutu/stable
-      steps:
-        - checkout
-        - add_ssh_key:
-            fingerprints:
-              - ""
+  checkout:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - ""
+      - checkout
 
 workflows:
   test-unity-project:
