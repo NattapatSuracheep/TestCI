@@ -17,10 +17,15 @@ jobs:
           fingerprints:
             - "62:fd:4b:73:5b:b4:c1:45:88:e3:80:cc:ce:0b:c9:a9"
       - checkout
-      - unity/create-activation-file
 
 
 workflows:
   test-unity-project:
     jobs:
       - unity-test
+      - unity/create-activation-file
+        requires:
+          - unity-test
+      - unity/test
+        requires:
+          - unity-test
