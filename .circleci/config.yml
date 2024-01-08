@@ -4,11 +4,11 @@ orbs:
   unity: game-ci/unity@1.7.0
       
 workflows:
-  create-unity-activation-file:
-    jobs:
-      - unity/create-activation-file
   test-unity-project:
     jobs:
+      - unity/create-activation-file:
+          name: "create-activation-file"
+
       # Windows
       - unity/test:
           name: 'test-windows'
@@ -23,4 +23,4 @@ workflows:
             target_platform: 'windows-il2cpp'
           test-platform: 'playmode'
           requires:
-          - create-unity-activation-file
+          - create-activation-file
