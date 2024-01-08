@@ -19,7 +19,9 @@ jobs:
 workflows:
   test-unity-project:
     jobs:
-      - checkout
+      - unity/create-activation-file:
+          name: "create-activation-file"
+
       # Windows
       - unity/test:
           name: 'test-windows'
@@ -32,7 +34,5 @@ workflows:
             size: 'large'
             editor_version: '2023.1.13f1'
             target_platform: 'windows-il2cpp'
+          project-path: "Assets"
           test-platform: 'playmode'
-          context: unity
-          requires:
-            - checkout
