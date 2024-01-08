@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   unity: game-ci/unity@1.7.0
-  windows: circle/windows@5.0.0
+  windows: circleci/windows@5.0.0
 
 jobs:
   unity-test:
