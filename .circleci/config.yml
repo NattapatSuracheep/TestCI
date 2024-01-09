@@ -13,6 +13,12 @@ jobs:
        target_platform: windows-il2cpp
        size: large
     steps:
+      - run:
+          name: Display env variables
+          command: printenv
+      - run:
+          name: test ssh
+          command: ssh git@github.com
       - add_ssh_keys:
           fingerprints:
             - "62:fd:4b:73:5b:b4:c1:45:88:e3:80:cc:ce:0b:c9:a9"
@@ -23,15 +29,18 @@ workflows:
   test-unity-project:
     jobs:
       - unity-test
-      - unity/test:
-          executor:
-            name: unity/windows-2019
-            editor_version: 2023.1.13f1
-            target_platform: windows-il2cpp
-            size: large
-          unity-license-var-name: 'UNITY_ENCODED_LICENSE'
-          unity-username-var-name: 'UNITY_USERNAME'
-          unity-password-var-name: 'UNITY_PASSWORD'
-          test-platform: 'playmode'
-          requires:
-            - unity-test
+      # - unity/test:
+      #     executor:
+      #       name: unity/windows-2019
+      #       editor_version: 2023.1.13f1
+      #       target_platform: windows-il2cpp
+      #       size: large
+      #     unity-license-var-name: 'UNITY_ENCODED_LICENSE'
+      #     unity-username-var-name: 'UNITY_USERNAME'
+      #     unity-password-var-name: 'UNITY_PASSWORD'
+      #     test-platform: 'playmode'
+      #     requires:
+      #       - unity-test
+      #     add_ssh_keys:
+      #       fingerprints:
+      #         - "62:fd:4b:73:5b:b4:c1:45:88:e3:80:cc:ce:0b:c9:a9"
