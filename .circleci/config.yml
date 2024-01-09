@@ -23,9 +23,6 @@ workflows:
   test-unity-project:
     jobs:
       - unity-test
-      - unity/create-activation-file:
-          requires:
-            - unity-test
       - unity/test:
           executor:
             name: unity/windows-2019
