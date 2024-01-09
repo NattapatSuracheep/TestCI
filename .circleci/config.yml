@@ -41,19 +41,34 @@ workflows:
       #     test-platform: 'playmode'
       #     context: unity
       #     name: test-windows
+
       - unity/build:
           executor:
-            name: unity/ubuntu
+            name: unity/windows
             editor_version: 2023.1.13f1
-            target_platform: android
+            target_platform: windows-il2cpp
             resource_class: large
-          step-name: Build Android
+          step-name: Build Windows
           unity-license-var-name: 'UNITY_ENCODED_LICENSE'
           unity-username-var-name: 'UNITY_USERNAME'
           unity-password-var-name: 'UNITY_PASSWORD'
-          build-target: Android
+          build-target: StandaloneWindows64
           compress: true
           context: unity
-          # requires:
-          #   - test-windows
-          name: build-Android-ubuntu
+          name: build-Windows
+
+
+      # - unity/build:
+      #     executor:
+      #       name: unity/ubuntu
+      #       editor_version: 2023.1.13f1
+      #       target_platform: android
+      #       resource_class: large
+      #     step-name: Build Android
+      #     unity-license-var-name: 'UNITY_ENCODED_LICENSE'
+      #     unity-username-var-name: 'UNITY_USERNAME'
+      #     unity-password-var-name: 'UNITY_PASSWORD'
+      #     build-target: Android
+      #     compress: true
+      #     context: unity
+      #     name: build-Android-ubuntu
