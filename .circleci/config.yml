@@ -45,15 +45,15 @@ workflows:
           executor:
             name: unity/ubuntu
             editor_version: 2023.1.13f1
-            target_platform: windows-mono
+            target_platform: android
             resource_class: large
-          step-name: Build StandaloneWindows64
+          step-name: Build Android
           unity-license-var-name: 'UNITY_ENCODED_LICENSE'
           unity-username-var-name: 'UNITY_USERNAME'
           unity-password-var-name: 'UNITY_PASSWORD'
-          build-target: StandaloneWindows64
+          build-target: Android
           compress: true
           context: unity
           # requires:
           #   - test-windows
-          name: build-windows-mono-ubuntu
+          name: build-Android-ubuntu
