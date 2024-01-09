@@ -39,6 +39,3 @@ workflows:
           test-platform: 'playmode'
           requires:
             - unity-test
-          add_ssh_keys:
-            fingerprints:
-              - "62:fd:4b:73:5b:b4:c1:45:88:e3:80:cc:ce:0b:c9:a9"
