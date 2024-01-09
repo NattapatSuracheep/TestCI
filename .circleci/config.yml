@@ -8,17 +8,18 @@ jobs:
   unity-test:
     description: unity test
     executor:
-       name: unity/windows-2019
-       editor_version: 2023.1.13f1
-       target_platform: windows-il2cpp
-       size: large
+      name: windows/default
+      #  name: unity/windows-2019
+      #  editor_version: 2023.1.13f1
+      #  target_platform: windows-il2cpp
+      #  size: large
     steps:
       - run:
           name: Display env variables
           command: printenv
       - run:
           name: test ssh
-          command: ssh git@github.com
+          command: ssh -v git@github.com
       - add_ssh_keys:
           fingerprints:
             - "62:fd:4b:73:5b:b4:c1:45:88:e3:80:cc:ce:0b:c9:a9"
