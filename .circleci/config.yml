@@ -3,43 +3,43 @@ version: 2.1
 orbs:
   unity: game-ci/unity@1.7.0
 
-# jobs:
-#   build-android-ubuntu:
-#         docker:
-#           - image: unityci/editor:ubuntu-2023.1.13f1-android-3.1.0
-#         steps:
-#           - checkout
-#           - setup_remote_docker
-#           - unity/prepare-env:
-#               cache-version: v2.android
-#           - unity/build:
-#               build-target: Android
-#               compress: true
-#               store-artifacts: true
-#               cache-version: v2.android
-#               # project-path: "src"
-#               build-method: 'MyWorldBuildCommand.CustomBuildAndroid'
-#           - store_artifacts:
-#               path: /root/project/src/Builds/Android/
+jobs:
+  build-android-ubuntu:
+        docker:
+          - image: unityci/editor:ubuntu-2023.1.13f1-android-3.1.0
+        steps:
+          - checkout
+          - setup_remote_docker
+          - unity/prepare-env:
+              cache-version: v2.android
+          - unity/build:
+              build-target: Android
+              compress: true
+              store-artifacts: true
+              cache-version: v2.android
+              # project-path: "src"
+              build-method: 'MyWorldBuildCommand.CustomBuildAndroid'
+          - store_artifacts:
+              path: /root/project/src/Builds/Android/
 
 workflows:
   build-unity-project:
     jobs:
-      # - build-android-ubuntu:
-      #     context: TestCI
-        
-      - unity/build:
-          name: 'build-android'
-          step-name: 'Build Android'
-          executor:
-            name: 'unity/ubuntu'
-            target_platform: 'android'
-            editor_version: '2023.1.13f1'
-            resource_class: 'large'
-          project-path: 'Unity2D-Demo-Game-CI-CD/src'
-          build-target: 'Android'
-          compress: true
+      - build-android-ubuntu:
           context: TestCI
+        
+      # - unity/build:
+      #     name: 'build-android'
+      #     step-name: 'Build Android'
+      #     executor:
+      #       name: 'unity/ubuntu'
+      #       target_platform: 'android'
+      #       editor_version: '2023.1.13f1'
+      #       resource_class: 'large'
+      #     project-path: 'Unity2D-Demo-Game-CI-CD/src'
+      #     build-target: 'Android'
+      #     compress: true
+      #     context: TestCI
           
       # Create the Unity activation license file
       # You only need this if you are using the Personal license
