@@ -11,12 +11,12 @@ jobs:
           - checkout
           - setup_remote_docker
           - unity/prepare-env:
-              cache-version: v2.android
+              cache-version: v3.android
           - unity/build:
               build-target: Android
               compress: true
               store-artifacts: true
-              cache-version: v2.android
+              cache-version: v3.android
               # project-path: "src"
               build-method: 'MyWorldBuildCommand.CustomBuildAndroid'
           - store_artifacts:
