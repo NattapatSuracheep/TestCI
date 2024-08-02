@@ -42,20 +42,20 @@ workflows:
       #     context: unity
       #     name: test-windows
 
-      - unity/build:
-          executor:
-            name: unity/windows-2022
-            editor_version: 2023.1.13f1
-            target_platform: windows-il2cpp
-            size: large
-          step-name: Build Windows IL2CPP
-          unity-license-var-name: 'UNITY_ENCODED_LICENSE'
-          unity-username-var-name: 'UNITY_USERNAME'
-          unity-password-var-name: 'UNITY_PASSWORD'
-          build-target: StandaloneWindows64
-          compress: true
-          context: unity
-          name: build-Windows
+      # - unity/build:
+      #     executor:
+      #       name: unity/windows-2022
+      #       editor_version: 2023.1.13f1
+      #       target_platform: windows-il2cpp
+      #       size: large
+      #     step-name: Build Windows IL2CPP
+      #     unity-license-var-name: 'UNITY_ENCODED_LICENSE'
+      #     unity-username-var-name: 'UNITY_USERNAME'
+      #     unity-password-var-name: 'UNITY_PASSWORD'
+      #     build-target: StandaloneWindows64
+      #     compress: true
+      #     context: unity
+      #     name: build-Windows
 
       # - unity/build:
       #     executor:
@@ -72,17 +72,17 @@ workflows:
       #     context: unity
       #     name: build-Windows
 
-      # - unity/build:
-      #     executor:
-      #       name: unity/ubuntu
-      #       editor_version: 2023.1.13f1
-      #       target_platform: android
-      #       resource_class: large
-      #     step-name: Build Android
-      #     unity-license-var-name: 'UNITY_ENCODED_LICENSE'
-      #     unity-username-var-name: 'UNITY_USERNAME'
-      #     unity-password-var-name: 'UNITY_PASSWORD'
-      #     build-target: Android
-      #     compress: true
-      #     context: unity
-      #     name: build-Android-ubuntu
+      - unity/build:
+          executor:
+            name: unity/ubuntu
+            editor_version: 2023.1.13f1
+            target_platform: android
+            resource_class: large
+          step-name: Build Android
+          unity-license-var-name: 'UNITY_ENCODED_LICENSE'
+          unity-username-var-name: 'UNITY_USERNAME'
+          unity-password-var-name: 'UNITY_PASSWORD'
+          build-target: Android
+          compress: true
+          context: unity
+          name: build-Android-ubuntu
