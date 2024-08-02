@@ -6,7 +6,7 @@ orbs:
 jobs:
   build-android-ubuntu:
         docker:
-          - image: unityci/editor:ubuntu-2021.3.19f1-android-3.0.1
+          - image: unityci/editor-ubuntu-2023.1.13f1-android-3.1.0
         steps:
           - checkout
           - setup_remote_docker
@@ -33,6 +33,8 @@ workflows:
       # More info: https://game.ci/docs/circleci/activation#personal-license
       - unity/create-activation-file:
           name: "create-activation-file"
+          editor_version: 2022.1.11f1
+
 
       # Run tests in playmode for Linux, Windows and macOS
       # More info: https://game.ci/docs/circleci/test
