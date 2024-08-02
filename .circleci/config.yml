@@ -17,7 +17,7 @@ jobs:
               compress: true
               store-artifacts: true
               cache-version: v2.android
-              project-path: "src"
+              # project-path: "src"
               build-method: 'MyWorldBuildCommand.CustomBuildAndroid'
           - store_artifacts:
               path: /root/project/src/Builds/Android/
