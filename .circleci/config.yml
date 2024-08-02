@@ -6,7 +6,7 @@ orbs:
 jobs:
   build-android-ubuntu:
         docker:
-          - image: unityci/editor:ubuntu-2023.1.13f1-android-3.1.0
+          - image: unityci/editor:ubuntu-2022.1.11f1-android-3.1.0
         steps:
           - checkout
           - setup_remote_docker
