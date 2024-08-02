@@ -25,16 +25,15 @@ jobs:
 workflows:
   build-unity-project:
     jobs:
-      # - build-android-ubuntu:
-      #     context: TestCI
+      - build-android-ubuntu:
+          context: TestCI
           
       # Create the Unity activation license file
       # You only need this if you are using the Personal license
       # More info: https://game.ci/docs/circleci/activation#personal-license
-      - unity/create-activation-file:
-          name: "create-activation-file"
-          editor_version: 2023.1.13f1
-
+      # - unity/create-activation-file:
+      #     name: "create-activation-file"
+      #     editor_version: 2022.1.11f1
 
       # Run tests in playmode for Linux, Windows and macOS
       # More info: https://game.ci/docs/circleci/test
